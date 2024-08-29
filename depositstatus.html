@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>About page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body>
+    <header>
+        <div class="head">
+            <div class="logo"><h3></h3></div>
+        </div>
+        
+        <div class="bottom">
+            <div class="navbar">
+                <ul>
+                    
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="product.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="finance.html"><i class="fa-solid fa-coins"></i></a></li>
+                    <li><a href=""><i class="fa-solid fa-question"></i></a></li>
+                    <li><a href="menu.html"><i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <h1 class="AboutHeader" align="center" color="whites"></h1>
+       <div class="backgroundd">
+      <div class="statusContainer">
+    <h3>Deposit Record</h3>
+    <div id="deposit-list"></div>
+</div>
+ </div>
+   </main>
+    <script>
+           document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve deposit data from localStorage
+        const deposits = JSON.parse(localStorage.getItem('deposits')) || [];
+
+        const depositList = document.getElementById('deposit-list');
+
+        if (deposits.length > 0) {
+            deposits.forEach((deposit, index) => {
+                // Create a div container for each deposit record
+                const depositDiv = document.createElement('div');
+                depositDiv.classList.add('deposit-record'); // Optional: Add CSS class for styling
+
+                // Create content for each record
+                const transactionHeading = document.createElement('p');
+                transactionHeading.innerHTML = `<strong>Transaction ${index + 1}</strong>`;
+                
+                const amountParagraph = document.createElement('p');
+                amountParagraph.textContent = `Amount Transferred: ${deposit.amount}`;
+                
+                const senderParagraph = document.createElement('p');
+                senderParagraph.textContent = `Sender Name: ${deposit.sender}`;
+                
+                const timeParagraph = document.createElement('p');
+                timeParagraph.textContent = `Time of Deposit Request: ${deposit.time}`;
+                
+                const statusParagraph = document.createElement('p');
+                statusParagraph.innerHTML = `Status: <span id="deposit-status-${index}">${deposit.status}</span>`;
+                
+                const separator = document.createElement('hr');
+                separator.style.borderColor = "#29313C";
+                separator.style.borderWidth = "1px";   // Set the width (thickness)
+                separator.style.borderStyle = "solid"; // Solid border
+            
+
+                // Append all created elements to the depositDiv
+                depositDiv.appendChild(transactionHeading);
+                depositDiv.appendChild(amountParagraph);
+                depositDiv.appendChild(senderParagraph);
+                depositDiv.appendChild(timeParagraph);
+                depositDiv.appendChild(statusParagraph);
+                depositDiv.appendChild(separator);
+
+                // Append the depositDiv to the depositList
+                depositList.appendChild(depositDiv);
+
+                // Simulate status update (for demo purposes)
+                setTimeout(() => {
+                    const randomStatus = Math.random() > 0.5 ? 'Approved' : 'Rejected';
+                    deposit.status = randomStatus;
+
+                    // Update the displayed status
+                    document.getElementById(`deposit-status-${index}`).textContent = deposit.status;
+
+                    // Update localStorage with the new status
+                    deposits[index] = deposit;
+                    localStorage.setItem('deposits', JSON.stringify(deposits));
+                }, 5000); // Simulate status update after 5 seconds
+            });
+        } else {
+            depositList.innerHTML = '<p>No deposit records found!</p>';
+        }
+    });
+    </script>
+</body>
+</html>

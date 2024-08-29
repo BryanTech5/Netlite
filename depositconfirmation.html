@@ -1,0 +1,105 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Menu page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body>
+    <header>
+        <div class="head">
+            <div class="logo"><h3></h3></div>
+        </div>
+        
+        <div class="bottom">
+            <div class="navbar">
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="product.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="finance.html"><i class="fa-solid fa-coins"></i></a></li>
+                    <li><a href="about.html"><i class="fa-solid fa-question"></i></a></li>
+                    <li><a href="menu.html"><i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <main class="ConfirmMain">
+        <div class="CMDBbackgroundfirst">
+            
+            <div class="DetailsContainer">                
+                <p class="TransferCaution">To complete this deposit Transfer the exact amount initiated to the account provided below!</p>
+         <p class="details">Account Number: <span>123456789</span></p>
+         <p class="details">Account Name: <span>Netlite</span></p>
+         <p class="details">Bank name: <span>Paystack</span</p>
+         <strong style="color:lawngreen"><p class="details">Initiated Amount: &#8358; <span id="deposit-amount"></span></p></strong>
+            </div>
+              <form id="Confirmdeposit" action="" method="post">   
+              <input type="text" name="sender" id="sender" placeholder="Sender Name:"required><br>
+              <label class="proofText">Upload transaction proof</label>
+              <input type="file" name="proof" id="proof" required>
+              <input type="submit" value="Paid" class="ConfirmBt">
+              
+              <div class="cautioncontainer">
+                  <p>Note:</p>
+                  <span>Minimum deposit:1,500,
+                 deposit is processe <br>&emsp; &nbsp; automatically  please ensure the details submit as <br> &emsp; &nbsp;&nbsp;sender name are well checked to avoid deposit delay.</span>
+              </div>
+          </form>
+                  </div>
+       
+       
+    </main>
+       
+    <script>
+     
+    
+     document.addEventListener('DOMContentLoaded', function() {
+        // Get the amount from the URL query string
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const amount = urlParams.get('amount');
+
+        // Display the deposit amount
+        if (amount) {
+            document.getElementById('deposit-amount').textContent = amount;
+        }
+
+        // Handle form submission
+        document.getElementById('Confirmdeposit').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const senderName = document.getElementById('sender').value;
+            const depositTime = new Date().toLocaleString(); // Capture current time
+
+            // Create a new deposit record
+            const newDeposit = {
+                amount: amount,
+                sender: senderName,
+                time: depositTime,
+                status: 'Pending'
+            };
+
+            // Retrieve existing deposit records from localStorage
+            const existingDeposits = JSON.parse(localStorage.getItem('deposits')) || [];
+
+            // Add the new deposit record to the existing deposits array
+            existingDeposits.push(newDeposit);
+
+            // Save the updated deposits array back to localStorage
+            localStorage.setItem('deposits', JSON.stringify(existingDeposits));
+
+            // Redirect to the status page
+            window.location.href = 'depositstatus.html';
+        });
+    });
+</script>
+</body>
+</html>

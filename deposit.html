@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Team page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body>
+    <header>
+        <div class="head">
+            <div class="logo"><h3>Deposit</h3></div>
+        </div>
+        
+        <div class="bottom">
+            <div class="navbar">
+                <ul>
+                    
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="product.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="finance.html"><i class="fa-solid fa-coins"></i></a></li>
+                    <li><a href="about.html"><i class="fa-solid fa-question"></i></a></li>
+                    <li><a href="menu.html"><i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <main class="TeamMain">
+        <div class="DBbackgroundfirst">
+            <h4 class="Teamtxt"></h4>
+            
+          <form id="deposit">
+              <p class="caution"></p>
+              <input type="number" name="amount" id="amount" placeholder="Enter Amount to deposit:" required>
+              <input type="submit" value="Proceed" class="depositBtn">
+              
+              <div class="cautioncontainer">
+                  <p>Note:</p>
+                  <span>Minimum deposit:1,500,
+                 deposit is processe <br>&emsp; &nbsp; automatically  please ensure the details submit as <br> &emsp; &nbsp;&nbsp;sender name are well checked to avoid deposit delay.</span>
+              </div>
+          </form>
+       </div>     
+    </main>
+      <script>
+    document.getElementById('deposit').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting
+
+        const amount = document.getElementById('amount').value;
+        
+        if (amount >= 1500) {
+            // Redirect to the next page, passing the amount as a query parameter
+            window.location.href = 'depositconfirmation.html?amount=' + amount;
+        } else {
+            alert("The minimum deposit is 1,500.");
+        }
+    });
+</script> 
+    
+</body>
+</html>

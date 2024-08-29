@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+    <div id="Background-container">
+        <div class="Heading">
+            <h1>Welcome Back</h1>
+        </div>
+        <p class="headingp">We're your financial Solution! SignIn to ur account.</p>
+        <form id="SigupForm">
+           
+            <div class="InputContainer">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="userName"id="userName" placeholder="Username:" required>
+            </div>
+           <div class="InputContainer">
+               <i class="fa-solid fa-phone"></i>
+                <input type="tel" name="number" id="number" placeholder="WhatsApp Number:" required>
+           </div>
+            <div class="InputContainer">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="E-Mail:" required>
+            </div>
+            <div class="InputContainer">
+                <i class="fa-solid fa-key"></i>
+                <input type="password" name="password" id="password" placeholder="Password:" required>
+            </div>
+            <button type="submit" id="signUpFormbutton">Sign Up</button>
+            
+            <div class="OldUserRedirect">
+                <label class="terms">Your account security is our top priority.</label>
+                <p class="olduserText">Havent signUp yet?<span><a href="singUp.html"> SignUp Here</a></span></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

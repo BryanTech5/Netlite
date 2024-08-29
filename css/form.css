@@ -1,0 +1,112 @@
+
+
+body{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "poppins";
+    background-color: #313A46;
+}
+#Background-container{
+    background-color: #29313C;
+    padding-top: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.Heading{
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 20px;
+}
+.headingp{
+    line-height: 0em;
+    font-size: 10px;
+    color: lawngreen;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#SigupForm{
+    background-color:  #313A46;
+    border-radius: 30px 30px 10px 10px;
+    padding-top: 10px;
+}
+.InputContainer{
+    display: flex; 
+    justify-content: center;    
+    margin: 30px;    
+}
+.InputContainer input{
+    padding: 10px;
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    border: 1px solid #29313C;
+    border-right: 1px solid lawngreen;
+    background-color: transparent;
+    position: absolute;
+    padding-left: 50px;
+    outline: none;
+    color: white;
+    
+}
+.InputContainer input::placeholder{
+    color: lawngreen;
+    font-size: 12px;  
+}
+.fa-solid{
+    border-bottom-left-radius: 20px;
+    border-top-left-radius:20px ;
+    background-color: lawngreen;
+    height: 39px;
+    width: 40px;
+    margin-right: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    z-index: 1;
+}
+.InputContainer input:hover{
+    border: 1px solid lawngreen;
+}
+#signUpFormbutton{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 280px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 7px;
+    background-color: lawngreen;
+    border: 1px solid#212121;
+    border-radius: 5px;
+}
+.terms{
+    color: white;
+    text-align: center;
+    font-size: 10px;
+}
+.OldUserRedirect{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #313A46;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 40px;
+}
+.olduserText{
+    color: white;
+    font-size: 10px;
+    text-align: center;
+}
+.olduserText a{
+    color: lawngreen;
+    text-decoration: none;
+}
+.olduserText a:hover{
+    text-decoration: underline;
+}
